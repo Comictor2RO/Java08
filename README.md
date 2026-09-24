@@ -1,9 +1,9 @@
-# Java 08 - Exercitii SOLID si Generics
+# Java 08 - SOLID and Generics Exercises
 
-Acest proiect contine exercitii Java despre principii SOLID, interfete, generics,
-pattern-uri de proiectare si separarea responsabilitatilor.
+This project contains Java exercises about SOLID principles, interfaces, generics,
+design patterns, and separation of responsibilities.
 
-## Cum rulezi exercitiile
+## Running the exercises
 
 Din directorul proiectului:
 
@@ -14,172 +14,172 @@ javac -d /tmp/java08-classes ex00/*.java
 java -cp /tmp/java08-classes ex00.InterfaceSegregationTest
 ```
 
-Pentru alt exercitiu, inlocuieste `ex00` si clasa de test cu valorile din lista de mai jos.
+For another exercise, replace `ex00` and the test class with the values listed below.
 
-## Exercitii
+## Exercises
 
 ### ex00 - Interface Segregation Principle
 
-**Ce face:**
-- defineste un `Document`;
-- separa responsabilitatile de imprimare si scanare in interfetele `Printer` si `Scanner`;
-- implementeaza ambele interfete in `MultiFunctionDevice`;
-- testeaza imprimarea unui text si scanarea documentului rezultat.
+**What it does:**
+- defines a `Document`;
+- separates printing and scanning responsibilities into the `Printer` and `Scanner` interfaces;
+- implements both interfaces in `MultiFunctionDevice`;
+- tests printing text and scanning the resulting document.
 
-**Ce inveti:**
-- cum se definesc si se implementeaza interfete;
-- principiul ISP: o clasa nu trebuie fortata sa depinda de metode pe care nu le foloseste;
-- polimorfismul prin interfete.
+**What you learn:**
+- how to define and implement interfaces;
+- the ISP: a class should not be forced to depend on methods it does not use;
+- polymorphism through interfaces.
 
-**Clasa de rulare:** `ex00.InterfaceSegregationTest`
+**Run class:** `ex00.InterfaceSegregationTest`
 
-### ex01 - Gestionarea studentilor
+### ex01 - Student Management
 
-**Ce face:**
-- reprezinta un student printr-un ID, o lista de cursuri si un set de cluburi;
-- foloseste `Map<Integer, Student>` pentru a gasi studentii dupa ID;
-- permite adaugarea unui student, inscrierea la un curs si inscrierea la un club.
+**What it does:**
+- represents a student with an ID, a list of courses, and a set of clubs;
+- uses `Map<Integer, Student>` to find students by ID;
+- allows adding a student, enrolling in a course, and joining a club.
 
-**Ce inveti:**
-- diferenta dintre `List`, `Set` si `Map`;
-- alegerea unei colectii potrivite pentru problema rezolvata;
-- organizarea datelor folosind compozitie si incapsulare.
+**What you learn:**
+- the difference between `List`, `Set`, and `Map`;
+- how to choose the right collection for a problem;
+- how to organize data using composition and encapsulation.
 
 ### ex02 - Dependency Inversion Principle
 
-**Ce face:**
-- defineste interfata `NotificationSender`;
-- implementeaza trimiterea prin `EmailSender` si `SMSSender`;
-- `NotificationManager` pastreaza o lista de `NotificationSender` si trimite mesajul prin toate implementarile inregistrate.
+**What it does:**
+- defines the `NotificationSender` interface;
+- implements email and SMS sending through `EmailSender` and `SMSSender`;
+- `NotificationManager` stores a list of `NotificationSender` objects and sends the message through every registered implementation.
 
-**Ce inveti:**
-- principiul DIP: clasele de nivel inalt depind de abstractii, nu de clase concrete;
-- programarea fata de interfete;
-- adaugarea unei metode noi de notificare fara modificarea managerului.
+**What you learn:**
+- the DIP: high-level classes depend on abstractions, not concrete classes;
+- programming against interfaces;
+- adding a new notification method without modifying the manager.
 
-**Clasa de rulare:** `ex02.DependencyInversionTest`
+**Run class:** `ex02.DependencyInversionTest`
 
-### ex03 - Pair generic
+### ex03 - Generic Pair
 
-**Ce face:**
-- implementeaza `Pair<T, U>` pentru doua valori de tipuri diferite;
-- ofera metode pentru recuperarea primei si celei de-a doua valori;
-- suprascrie `toString()` pentru afisarea perechii.
+**What it does:**
+- implements `Pair<T, U>` for two values of different types;
+- provides methods for retrieving the first and second values;
+- overrides `toString()` to display the pair.
 
-**Ce inveti:**
+**What you learn:**
 - generics in Java;
-- reutilizarea aceleiasi clase pentru tipuri diferite;
-- similaritatea dintre generics in Java si templates in C++;
-- inferenta tipurilor folosind operatorul `<>`.
+- reusing the same class with different types;
+- the similarity between Java generics and C++ templates;
+- type inference using the `<>` operator.
 
-**Clasa de rulare:** `ex03.GenericsTest`
+**Run class:** `ex03.GenericsTest`
 
-### ex04 - Observer generic pentru un blog
+### ex04 - Generic Observer for a Blog
 
-**Ce face:**
-- `Subject<T>` defineste atasarea, detasarea si notificarea observatorilor;
-- `Observer<T>` defineste metoda `update(T data)`;
-- `Blog` pastreaza observatorii si ii notifica atunci cand apare o postare noua;
-- `Subscriber` primeste continutul postarii.
+**What it does:**
+- `Subject<T>` defines attaching, detaching, and notifying observers;
+- `Observer<T>` defines the `update(T data)` method;
+- `Blog` stores observers and notifies them when a new post is added;
+- `Subscriber` receives the post content.
 
-**Ce inveti:**
-- pattern-ul Observer;
-- generics aplicat interfetelor;
-- notificarea mai multor obiecte printr-un contract comun;
-- separarea subiectului de observatorii sai.
+**What you learn:**
+- the Observer pattern;
+- applying generics to interfaces;
+- notifying multiple objects through a common contract;
+- separating a subject from its observers.
 
-**Clasa de rulare:** `ex04.SolidObserverTest`
+**Run class:** `ex04.SolidObserverTest`
 
-### ex05 - SortedList si upper bounds
+### ex05 - SortedList and Upper Bounds
 
-**Ce face:**
-- implementeaza `SortedList<T extends Comparable<T>>`;
-- adauga elemente si sorteaza automat lista;
-- demonstreaza folosirea clasei cu `Integer` si `Double`.
+**What it does:**
+- implements `SortedList<T extends Comparable<T>>`;
+- adds elements and automatically sorts the list;
+- demonstrates using the class with `Integer` and `Double`.
 
-**Ce inveti:**
-- limite superioare pentru tipuri generice;
-- de ce `Integer` si `Double` pot fi sortate: ambele implementeaza `Comparable`;
-- folosirea `compareTo()` si a sortarii generice;
-- verificarea constrangerilor de tip la compilare.
+**What you learn:**
+- upper bounds for generic types;
+- why `Integer` and `Double` can be sorted: both implement `Comparable`;
+- using `compareTo()` and generic sorting;
+- checking type constraints at compile time.
 
-**Clasa de rulare:** `ex05.UpperBoundedCollectionsTest`
+**Run class:** `ex05.UpperBoundedCollectionsTest`
 
-### ex06 - Smart Home si Interface Segregation
+### ex06 - Smart Home and Interface Segregation
 
-**Ce face:**
-- separa controlul in `LightControl`, `TemperatureControl` si `SecurityControl`;
-- implementeaza dispozitivele `SmartLight`, `SmartThermostat` si `SmartCamera`;
-- `SmartHomeHub` pastreaza dispozitivele prin interfetele lor si executa actiuni de grup.
+**What it does:**
+- separates control into `LightControl`, `TemperatureControl`, and `SecurityControl`;
+- implements the `SmartLight`, `SmartThermostat`, and `SmartCamera` devices;
+- `SmartHomeHub` stores devices through their interfaces and performs group actions.
 
-**Ce inveti:**
-- aplicarea ISP intr-un sistem mai mare;
-- programarea fata de interfete, nu fata de implementari concrete;
-- folosirea colectiilor de interfete;
-- actiuni comune asupra mai multor dispozitive.
+**What you learn:**
+- applying ISP in a larger system;
+- programming against interfaces instead of concrete implementations;
+- using collections of interfaces;
+- performing common actions on multiple devices.
 
-**Clasa de rulare:** `ex06.MovieRatingTest`
+**Run class:** `ex06.MovieRatingTest`
 
-Nota: numele clasei de test este pastrat asa cum exista in scheletul proiectului.
+Note: the test class name is kept as it exists in the project skeleton.
 
-### ex07 - Notificari de concerte cu Observer generic
+### ex07 - Concert Notifications with a Generic Observer
 
-**Ce face:**
-- `ConcertNotifier` este subiectul care gestioneaza followerii;
-- `Follower` este observatorul care primeste notificari;
-- `ConcertEvent` este trimis direct prin `update`, fara un callback separat;
-- followerii pot fi atasati si detasati.
+**What it does:**
+- `ConcertNotifier` is the subject that manages followers;
+- `Follower` is the observer that receives notifications;
+- `ConcertEvent` is sent directly through `update`, without a separate callback;
+- followers can be attached and detached.
 
-**Ce inveti:**
-- o varianta generica a pattern-ului Observer;
-- transmiterea unor obiecte complexe intre subiect si observatori;
-- diferenta dintre transmiterea directa a datelor si un callback separat;
-- gestionarea abonatilor.
+**What you learn:**
+- a generic version of the Observer pattern;
+- passing complex objects between a subject and its observers;
+- the difference between direct data transfer and a separate callback;
+- subscriber management.
 
-**Clasa de rulare:** `ex07.ConcertNotificationTest`
+**Run class:** `ex07.ConcertNotificationTest`
 
-### ex08 - Turneu eSports si strategii de clasament
+### ex08 - eSports Tournament and Ranking Strategies
 
-**Ce face:**
-- `Team` defineste contractul comun si extinde `Comparable<Team>`;
-- `EsportsTeam` contine numele si pozitia echipei si implementeaza `compareTo()`;
-- `Tournament<T extends Team>` inregistreaza echipe de tip compatibil;
-- `RankingStrategy<T extends Team>` defineste un algoritm de clasare;
-- testul aplica o strategie care sorteaza echipele dupa pozitie.
+**What it does:**
+- `Team` defines the common contract and extends `Comparable<Team>`;
+- `EsportsTeam` stores the team name and position and implements `compareTo()`;
+- `Tournament<T extends Team>` registers compatible team types;
+- `RankingStrategy<T extends Team>` defines a ranking algorithm;
+- the test applies a strategy that sorts teams by position.
 
-**Ce inveti:**
-- generics cu upper bounds, de forma `T extends Team`;
-- cum se foloseste `Comparable` pentru sortare;
-- pattern-ul Strategy: algoritmul este separat de datele turneului;
-- cum schimbi algoritmul de clasare fara sa modifici `Tournament`.
+**What you learn:**
+- generics with upper bounds such as `T extends Team`;
+- how to use `Comparable` for sorting;
+- the Strategy pattern: the algorithm is separated from the tournament data;
+- how to change the ranking algorithm without modifying `Tournament`.
 
-**Clasa de rulare:** `ex08.EsportsTournamentTest`
+**Run class:** `ex08.EsportsTournamentTest`
 
-### ex09 - Motor de recomandari pentru streaming
+### ex09 - Streaming Recommendation Engine
 
-**Ce face:**
-- `Content` este contractul comun pentru `Movie` si `Series`;
-- `User` are un gen preferat;
-- `RecommendationAlgorithm<T extends Content>` defineste algoritmul de recomandare;
-- `GenreRecommendationAlgorithm` filtreaza continutul dupa gen;
-- `RecommendationEngine<T extends Content>` foloseste algoritmul primit;
-- `StreamingService<T extends Content>` inregistreaza utilizatori si notifica doar utilizatorii interesati cand apare continut nou.
+**What it does:**
+- `Content` is the common contract for `Movie` and `Series`;
+- `User` has a preferred genre;
+- `RecommendationAlgorithm<T extends Content>` defines the recommendation algorithm;
+- `GenreRecommendationAlgorithm` filters content by genre;
+- `RecommendationEngine<T extends Content>` uses the injected algorithm;
+- `StreamingService<T extends Content>` registers users and notifies only interested users when new content is added.
 
-**Ce inveti:**
-- compunerea mai multor generics intr-un proiect real;
-- Dependency Inversion prin injectarea algoritmului in motor;
-- Strategy Pattern pentru algoritmi de recomandare;
-- separarea responsabilitatilor conform principiilor SOLID;
-- filtrarea continutului si notificarea selectiva a utilizatorilor.
+**What you learn:**
+- composing multiple generics in a real project;
+- Dependency Inversion by injecting the algorithm into the engine;
+- the Strategy Pattern for recommendation algorithms;
+- separation of responsibilities according to SOLID principles;
+- content filtering and selective user notifications.
 
-**Clasa de rulare:** `ex09.SsreTest`
+**Run class:** `ex09.SsreTest`
 
-## Concepte principale recapitulare
+## Main Concepts Recap
 
-- **Interfete:** definesc contracte si reduc dependenta de implementari concrete.
-- **Generics:** permit cod reutilizabil, verificat la compilare.
-- **List, Set, Map:** structuri de date pentru scenarii diferite.
-- **Comparable:** permite compararea si sortarea obiectelor.
-- **Observer:** notifica mai multe obiecte atunci cand apare o schimbare.
-- **Strategy:** permite schimbarea algoritmului fara modificarea clasei principale.
-- **SOLID:** ajuta la obtinerea unui cod extensibil, testabil si usor de intretinut.
+- **Interfaces:** define contracts and reduce dependencies on concrete implementations.
+- **Generics:** enable reusable code with compile-time type checking.
+- **List, Set, Map:** data structures for different scenarios.
+- **Comparable:** enables object comparison and sorting.
+- **Observer:** notifies multiple objects when a change occurs.
+- **Strategy:** allows changing an algorithm without modifying the main class.
+- **SOLID:** helps create code that is extensible, testable, and maintainable.
